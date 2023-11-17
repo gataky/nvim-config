@@ -11,7 +11,7 @@ return {
         height = 0.95,
         prompt_position = "top",
         vertical = {
-          mirror = false,
+          mirror = true,
           preview_cutoff = 40,
         },
       },
