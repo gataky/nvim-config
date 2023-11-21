@@ -10,6 +10,7 @@ return {
       adapters = {
         ["neotest-python"] = {
           runner = "pytest",
+          pytest_discover_instances = true,
         },
         ["neotest-jest"] = {},
       },
