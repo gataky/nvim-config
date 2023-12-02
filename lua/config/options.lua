@@ -12,3 +12,8 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.cmd([[ set nofoldenable]])
 
 vim.opt.foldenable = true
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
+vim.g.fugitive_gitlab_domains = { "https://gitlab.zgtools.net" }
