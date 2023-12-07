@@ -7,13 +7,16 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
+vim.opt.colorcolumn = "88"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.cmd([[ set nofoldenable]])
 
 vim.opt.foldenable = true
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4
 
 vim.g.fugitive_gitlab_domains = { "https://gitlab.zgtools.net" }
