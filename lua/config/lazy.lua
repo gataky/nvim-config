@@ -20,7 +20,7 @@ require("lazy").setup({
 
         -- import any extras modules here
         { import = "lazyvim.plugins.extras.coding.yanky" },
-        { import = "lazyvim.plugins.extras.coding.copilot" },
+        -- { import = "lazyvim.plugins.extras.coding.copilot" },
         { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
         { import = "lazyvim.plugins.extras.test.core" },
         { import = "lazyvim.plugins.extras.lang.typescript" },
