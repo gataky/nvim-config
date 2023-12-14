@@ -7,12 +7,12 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
-vim.opt.colorcolumn = "88"
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.cmd([[ set nofoldenable]])
+vim.opt.colorcolumn = "79"
 
-vim.opt.foldenable = true
+vim.o.foldcolumn = "0" -- '0' is not bad
+vim.o.foldlevel = 3
+vim.o.foldlevelstart = 3
+vim.o.foldenable = true
 
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character

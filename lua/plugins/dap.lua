@@ -2,7 +2,7 @@ return {
     {
         "nvim-dap-virtual-text",
         opts = {
-            enabled = true,
+            enabled = false,
         },
     },
     {
@@ -24,8 +24,6 @@ return {
             vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint" })
             vim.fn.sign_define("DapStopped", { text = "󰁔", texthl = "DapStopped" })
 
-            local buf_keymap = {}
-
             local function DebugMappingKeyBindings(active)
                 local opts = { noremap = true, silent = true, buffer = false }
                 if active then
@@ -43,7 +41,13 @@ return {
 
                     set("n", "r", "<cmd>lua require('dap').repl.open()<CR>", opts)
                     set("n", "v", function()
-                        require("dapui").float_element("scopes", { enter = true })
+                        local height = math.floor((vim.o.lines * 0.75))
+                        local width = math.floor((vim.o.columns * 0.75))
+
+                        require("dapui").float_element(
+                            "scopes",
+                            { enter = true, width = width, height = height, position = "center" }
+                        )
                     end)
                 else
                     local del = vim.keymap.del
@@ -51,17 +55,6 @@ return {
                     for _, key in ipairs(keys) do
                         del("n", key)
                     end
-
-                    -- del("n", "c")
-                    -- del("n", "n")
-                    -- del("n", "s")
-                    -- del("n", "t")
-                    -- del("n", "o")
-                    -- del("n", "u")
-                    -- del("n", "d")
-                    -- del("n", "b")
-                    -- del("n", "q")
-                    -- del("n", "r")
                 end
             end
 
