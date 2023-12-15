@@ -8,12 +8,14 @@ return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            "mfussenegger/nvim-dap-python",
-            config = function()
-                local path = require("mason-registry").get_package("debugpy"):get_install_path()
-                require("dap-python").setup(path .. "/venv/bin/python")
-                require("dap-python").test_runner = "pytest"
-            end,
+            {
+                "mfussenegger/nvim-dap-python",
+                config = function()
+                    local path = require("mason-registry").get_package("debugpy"):get_install_path()
+                    require("dap-python").setup(path .. "/venv/bin/python")
+                    require("dap-python").test_runner = "pytest"
+                end,
+            },
         },
         config = function()
             local dap = require("dap")
@@ -51,7 +53,7 @@ return {
                     end)
                 else
                     local del = vim.keymap.del
-                    local keys = { "c", "n", "s", "t", "o", "u", "d", "b", "q", "r" }
+                    local keys = { "c", "n", "s", "t", "o", "u", "d", "b", "q", "r", "v" }
                     for _, key in ipairs(keys) do
                         del("n", key)
                     end
