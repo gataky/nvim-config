@@ -9,24 +9,88 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
     spec = {
         { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+        {
+            "rebelot/kanagawa.nvim",
+            name = "kanagawa",
+            priority = 1000,
+            opts = {
+                compile = false, -- enable compiling the colorscheme
+                undercurl = true, -- enable undercurls
+                commentStyle = { italic = true },
+                functionStyle = {},
+                keywordStyle = { italic = true },
+                statementStyle = { bold = true },
+                typeStyle = {},
+                transparent = true, -- do not set background color
+                dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+                terminalColors = true, -- define vim.g.terminal_color_{0,17}
+                colors = { -- add/modify theme and palette colors
+                    palette = {},
+                    theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+                },
+                overrides = function(colors) -- add/modify highlights
+                    return {}
+                end,
+                theme = "wave", -- Load "wave" theme when 'background' option is not set
+                background = { -- map the value of 'background' option to a theme
+                    dark = "wave", -- try "dragon" !
+                    light = "lotus",
+                },
+            },
+        },
+        {
+            "ellisonleao/gruvbox.nvim",
+            priority = 1000,
+            config = true,
+            opts = {
+                terminal_colors = true, -- add neovim terminal colors
+                undercurl = true,
+                underline = true,
+                bold = true,
+                italic = {
+                    strings = true,
+                    emphasis = true,
+                    comments = true,
+                    operators = false,
+                    folds = true,
+                },
+                strikethrough = true,
+                invert_selection = false,
+                invert_signs = false,
+                invert_tabline = false,
+                invert_intend_guides = false,
+                inverse = true, -- invert background for search, diffs, statuslines and errors
+                contrast = "", -- can be "hard", "soft" or empty string
+                palette_overrides = {},
+                overrides = {},
+                dim_inactive = true,
+                transparent_mode = true,
+            },
+        },
+        {
+            "savq/melange-nvim",
+            lazy = false,
+            priority = 1000,
+        },
         -- add LazyVim and import its plugins
         {
             "LazyVim/LazyVim",
             import = "lazyvim.plugins",
             opts = {
-                colorscheme = "catppuccin",
+                colorscheme = "melange",
             },
         },
 
         -- import any extras modules here
         { import = "lazyvim.plugins.extras.coding.yanky" },
-        -- { import = "lazyvim.plugins.extras.coding.copilot" },
         { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
         { import = "lazyvim.plugins.extras.test.core" },
         { import = "lazyvim.plugins.extras.lang.typescript" },
+        { import = "lazyvim.plugins.extras.lang.python" },
         { import = "lazyvim.plugins.extras.lang.go" },
         { import = "lazyvim.plugins.extras.lang.clangd" },
         { import = "lazyvim.plugins.extras.lang.terraform" },
+        { import = "lazyvim.plugins.extras.lang.json" },
 
         { import = "lazyvim.plugins.extras.dap.core" },
 

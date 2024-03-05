@@ -1,48 +1,51 @@
-local python = {
-    settings = {
-        -- used for code navigation and code completion
-        pylsp = {
-            plugins = {
-                autopep8 = { enabled = false },
-                flake8 = { enabled = false },
-                pycodestyle = { enabled = false },
-                pyflakes = { enabled = false },
-            },
-        },
-    },
-}
+function cap()
+    capabilities = require("cmp_nvim_lsp").default_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+    )
+    capabilities.textDocument.completion.completionItem.snippetSupport = false
+    return capabilities
+end
 
 return {
-    "neovim/nvim-lspconfig",
-    opts = {
-        diagnostics = {
-            virtual_text = false,
-        },
-        servers = {
-            lua_ls = {
-                settings = {
-                    Lua = {
-                        format = {
-                            enable = true,
-                            defaultConfig = {
-                                indent_style = "space",
-                                indent_size = "4",
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            capabilities = cap(),
+            diagnostics = {
+                virtual_text = false,
+            },
+            servers = {
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            format = {
+                                enable = true,
+                                defaultConfig = {
+                                    indent_style = "space",
+                                    indent_size = "4",
+                                },
                             },
                         },
                     },
                 },
-            },
-            pylsp = python,
-            ruff_lsp = {},
-            clangd = {
-                cmd = {
-                    "clangd",
-                    "--background-index",
-                    "--clang-tidy",
-                    "--header-insertion=iwyu",
-                    "--completion-style=detailed",
-                    "--function-arg-placeholders",
-                    "--fallback-style=llvm",
+                rust_analyzer = {
+                    settings = {
+                        diagnostics = {
+                            enable = false,
+                        },
+                        cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+                    },
+                },
+                clangd = {
+                    cmd = {
+                        "clangd",
+                        "--background-index",
+                        "--clang-tidy",
+                        "--header-insertion=iwyu",
+                        "--completion-style=detailed",
+                        "--function-arg-placeholders",
+                        "--fallback-style=llvm",
+                    },
                 },
             },
         },

@@ -10,8 +10,8 @@ vim.g.loaded_perl_provider = 0
 vim.opt.colorcolumn = "79"
 
 vim.o.foldcolumn = "0" -- '0' is not bad
-vim.o.foldlevel = 5
-vim.o.foldlevelstart = 5
+vim.o.foldlevel = 10
+vim.o.foldlevelstart = 10
 vim.o.foldenable = true
 
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces

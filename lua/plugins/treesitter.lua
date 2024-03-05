@@ -1,8 +1,9 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  opts = {
-    ensure_installed = {
-      "mermaid",
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+        ensure_installed = {
+            "mermaid",
+            "rust",
+        },
     },
-  },
 }
